@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="description" content="FREE-ROOM V2 AERO-PRISM P300: 予算¥5,950・外枠ケース無し・CNC無し・無電源・国内完結・雨100%不侵入・5.00畳（8.10㎡）3D CAD" />
+  <title>FREE-ROOM V2 AERO-PRISM P300 — 3D CAD</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "../vendor/three.module.min.js",
+        "three/addons/controls/OrbitControls.js": "../vendor/OrbitControls.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- Pure White Full-Bleed 3D CAD Viewport -->
+  <main id="cad-stage">
+    <canvas id="cad-canvas"></canvas>
+  </main>
+
+  <!-- Analysis Color Swatch Strip (Zero Text — Shown ONLY when CFD/FEA/Rain mode is active) -->
+  <div id="heatmap-swatch" class="heatmap-swatch" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M3 8h11a3 3 0 1 0-3-3"/><path d="M3 12h15a3 3 0 1 1-3 3"/><path d="M3 16h7a2.5 2.5 0 1 1-2.5 2.5"/></svg>
+    <div class="heatmap-bar"></div>
+    <svg viewBox="0 0 24 24"><path d="M12 2.5C9.5 6.8 6.5 10.2 6.5 14a5.5 5.5 0 0 0 11 0c0-3.8-3-7.2-5.5-11.5z"/></svg>
+  </div>
+
+  <!-- Left Vertical Dock: Camera Presets (100% Icon-Only, Zero Text) -->
+  <nav class="cad-dock dock-left" aria-label="Viewpoints">
+    <!-- Isometric 3D View -->
+    <button id="btn-view-iso" class="cad-btn is-active" type="button" aria-label="Isometric View">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/>
+        <path d="M12 12l8-4.5"/>
+        <path d="M12 12v9"/>
+        <path d="M12 12L4 7.5"/>
+      </svg>
+    </button>
+    <!-- Front Elevation View (Aero-Prism Gable) -->
+    <button id="btn-view-front" class="cad-btn" type="button" aria-label="Front Elevation">
+      <svg viewBox="0 0 24 24">
+        <path d="M2.5 19h19"/>
+        <path d="M4.5 19v-4L12 5.5 19.5 15v4"/>
+        <path d="M12 5.5V19"/>
+      </svg>
+    </button>
+    <!-- Top Plan View (3.0x2.7m Rectangle + Vestibules) -->
+    <button id="btn-view-top" class="cad-btn" type="button" aria-label="Top Plan View">
+      <svg viewBox="0 0 24 24">
+        <polygon points="5,6.5 12,3.5 19,6.5 19,17.5 12,20.5 5,17.5"/>
+        <path d="M12 3.5v17"/>
+        <circle cx="12" cy="12" r="1.5"/>
+      </svg>
+    </button>
+    <!-- Interior Walk-In View -->
+    <button id="btn-view-interior" class="cad-btn" type="button" aria-label="Interior View">
+      <svg viewBox="0 0 24 24">
+        <path d="M4 20h16"/>
+        <path d="M6 20V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v14"/>
+        <circle cx="12" cy="11" r="2.2"/>
+        <path d="M9 17c.8-1.6 5.2-1.6 6 0"/>
+      </svg>
+    </button>
+    <div class="dock-sep"></div>
+    <!-- Soft Compression Roll Close-Up View (Zero Hard Case!) -->
+    <button id="btn-view-packed" class="cad-btn" type="button" aria-label="Soft Roll Focus">
+      <svg viewBox="0 0 24 24">
+        <rect x="4.5" y="7" width="15" height="10" rx="4"/>
+        <path d="M9 7v10"/>
+        <path d="M15 7v10"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Right Vertical Dock: Structural Layers & Multi-Physics Visualizations (Zero Text) -->
+  <nav class="cad-dock dock-right" aria-label="CAD Modes">
+    <!-- X-Ray / Skeleton 3-Mast Coaxial Core Mode -->
+    <button id="btn-mode-xray" class="cad-btn" type="button" aria-label="Skeleton X-Ray">
+      <svg viewBox="0 0 24 24">
+        <path d="M2 12s3.8-6 10-6 10 6 10 6-3.8 6-10 6-10-6-10-6z"/>
+        <circle cx="12" cy="12" r="2.8"/>
+      </svg>
+    </button>
+    <!-- Half Section Cutaway Mode (Reveals 24cm Bathtub + 180° S-Turn Labyrinth + 3 Masts) -->
+    <button id="btn-mode-section" class="cad-btn" type="button" aria-label="Section Cut">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 3v18"/>
+        <path d="M12 5l7 5v9h-7"/>
+        <path d="M5 10l3.5-2.5" stroke-dasharray="2 2"/>
+        <path d="M5 19v-9" stroke-dasharray="2 2"/>
+        <path d="M5 19h7" stroke-dasharray="2 2"/>
+      </svg>
+    </button>
+    <!-- Exploded CAD Assembly View -->
+    <button id="btn-mode-explode" class="cad-btn" type="button" aria-label="Exploded Assembly">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 2l6 3.2L12 8.4 6 5.2 12 2z"/>
+        <path d="M6 12l6 3.2 6-3.2"/>
+        <path d="M6 18.2l6 3.2 6-3.2"/>
+        <path d="M12 8.4v2.6"/>
+        <path d="M12 15.2v2.2"/>
+      </svg>
+    </button>
+    <div class="dock-sep"></div>
+    <!-- OpenFOAM 30m/s CFD + CalculiX FEA + 150mm/h Rain Deflection Mode -->
+    <button id="btn-mode-physics" class="cad-btn" type="button" aria-label="CFD FEA & Rainstorm">
+      <svg viewBox="0 0 24 24">
+        <path d="M3 8h10a2.5 2.5 0 1 0-2.5-2.5"/>
+        <path d="M3 12h14.5a2.5 2.5 0 1 1-2.5 2.5"/>
+        <path d="M7 17l-1.5 3"/>
+        <path d="M12 17l-1.5 3"/>
+        <path d="M17 17l-1.5 3"/>
+      </svg>
+    </button>
+    <!-- Human & Sleeping Scale Figures -->
+    <button id="btn-mode-scale" class="cad-btn is-active" type="button" aria-label="Human Scale & Interior">
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="5.5" r="2.2"/>
+        <path d="M9 10.5a3 3 0 0 1 6 0v4h-1.5v5.5h-3V14.5H9v-4z"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Top-Right Dock: Fullscreen Toggle & Collapsible Engineering Explanation Sheet -->
+  <nav class="cad-dock dock-top-right" aria-label="Utilities">
+    <button id="btn-fullscreen" class="cad-btn" type="button" aria-label="Fullscreen">
+      <svg id="icon-fs-enter" viewBox="0 0 24 24">
+        <path d="M4 9V4h5"/>
+        <path d="M20 9V4h-5"/>
+        <path d="M4 15v5h5"/>
+        <path d="M20 15v5h-5"/>
+      </svg>
+      <svg id="icon-fs-exit" viewBox="0 0 24 24" style="display:none">
+        <path d="M9 4v5H4"/>
+        <path d="M15 4v5h5"/>
+        <path d="M9 20v-5H4"/>
+        <path d="M15 20v-5h5"/>
+      </svg>
+    </button>
+    <button id="btn-info" class="cad-btn" type="button" aria-label="Engineering Explanation">
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 16v-4.5"/>
+        <circle cx="12" cy="8.2" r="0.6" fill="currentColor" stroke="none"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Bottom Floating Morph Dock: Soft Compression Roll <-> Play/Pause <-> Deployed Aero-Prism (Zero Text) -->
+  <div class="cad-dock dock-bottom" role="region" aria-label="Deployment Controls">
+    <!-- Snap to 0% (Zero-Case Soft Roll 495x148x455mm) -->
+    <button id="btn-snap-packed" class="cad-btn round" type="button" aria-label="Soft Roll State">
+      <svg viewBox="0 0 24 24">
+        <rect x="5" y="7.5" width="14" height="9" rx="3.5"/>
+        <path d="M9.5 7.5v9"/>
+        <path d="M14.5 7.5v9"/>
+      </svg>
+    </button>
+    <!-- Play / Pause Deployment Sequence -->
+    <button id="btn-play" class="cad-btn round" type="button" aria-label="Play Deployment">
+      <svg id="icon-play" viewBox="0 0 24 24">
+        <polygon points="8,5 19,12 8,19" fill="currentColor" stroke="none"/>
+      </svg>
+      <svg id="icon-pause" viewBox="0 0 24 24" style="display:none">
+        <rect x="6.5" y="5" width="3.8" height="14" rx="1" fill="currentColor" stroke="none"/>
+        <rect x="13.7" y="5" width="3.8" height="14" rx="1" fill="currentColor" stroke="none"/>
+      </svg>
+    </button>
+    <div class="dock-sep-v"></div>
+    <div class="morph-slider-wrap">
+      <input id="morph-slider" type="range" min="0" max="1000" value="1000" aria-label="Deployment Progress" />
+    </div>
+    <div class="dock-sep-v"></div>
+    <!-- Snap to 100% (Deployed Aero-Prism P300) -->
+    <button id="btn-snap-deployed" class="cad-btn round is-active" type="button" aria-label="Deployed State">
+      <svg viewBox="0 0 24 24">
+        <path d="M2.5 18.5h19"/>
+        <path d="M4.5 18.5v-3.5L12 6.5l7.5 8.5v3.5"/>
+        <path d="M12 6.5v12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Collapsible Engineering Explanation Sheet (ONLY container containing descriptive text) -->
+  <div id="info-backdrop" aria-hidden="true"></div>
+  <aside id="info-drawer" aria-hidden="true" aria-label="V2設計・超厳格検証説明">
+    <header class="drawer-head">
+      <div class="drawer-title-group">
+        <h1 id="doc-title"></h1>
+        <p id="doc-subtitle"></p>
+      </div>
+      <button id="btn-info-close" class="cad-btn round" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24">
+          <path d="M6 6l12 12"/>
+          <path d="M18 6L6 18"/>
+        </svg>
+      </button>
+    </header>
+    <div class="drawer-tabs" role="tablist">
+      <button class="drawer-tab is-active" data-tab="overview" type="button">概要・V1比較</button>
+      <button class="drawer-tab" data-tab="rainproof" type="button">雨100%不侵入</button>
+      <button class="drawer-tab" data-tab="simulations" type="button">9大超厳格検証</button>
+      <button class="drawer-tab" data-tab="bom" type="button">¥5,950部品表</button>
+      <button class="drawer-tab" data-tab="colab" type="button">A100超激重Sim</button>
+    </div>
+    <div class="drawer-body">
+      <section id="tab-overview" class="tab-panel is-active"></section>
+      <section id="tab-rainproof" class="tab-panel"></section>
+      <section id="tab-simulations" class="tab-panel"></section>
+      <section id="tab-bom" class="tab-panel"></section>
+      <section id="tab-colab" class="tab-panel"></section>
+    </div>
+  </aside>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

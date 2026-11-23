@@ -1,0 +1,228 @@
+{
+  "simulation": "V2-SIM-9: Zero-Cheating Budget (<=¥6,000), Constraint & DFM Audit",
+  "passed": true,
+  "checks": {
+    "total_cost_strictly_le_6000_jpy": true,
+    "zero_outer_hard_case_parts": true,
+    "zero_outsourced_cnc_parts": true,
+    "zero_electric_parts": true,
+    "zero_international_shipping": true,
+    "full_enclosure_roof_walls_floor_present": true,
+    "carry_mass_plus5pct_le_12kg": true,
+    "solo_setup_time_le_10min": true
+  },
+  "budget_audit": {
+    "total_cost_jpy": 5950,
+    "budget_limit_jpy": 6000,
+    "budget_margin_jpy": 50,
+    "shipping_jpy": 0,
+    "intl_shipping_jpy": 0,
+    "n_bom_items": 12,
+    "domestic_retail_rate_pct": 100.0,
+    "outer_case_parts": 0,
+    "cnc_parts": 0,
+    "electric_parts": 0
+  },
+  "mass_and_setup": {
+    "nominal_carry_mass_kg": 10.92,
+    "worst_case_plus5pct_mass_kg": 11.47,
+    "solo_setup_time_min": 8.5,
+    "field_tools_required": "なし（素手・工具不要・無電源）"
+  },
+  "v1_vs_v2_efficiency": {
+    "v1_cost_jpy": 558044,
+    "v2_cost_jpy": 5950,
+    "cost_reduction_pct": 98.93,
+    "v1_jpy_per_m2": 29762.3,
+    "v2_jpy_per_m2": 734.6,
+    "area_cost_efficiency_multiplier": 40.5,
+    "v1_jpy_per_m3": 14639.1,
+    "v2_jpy_per_m3": 734.6,
+    "volume_cost_efficiency_multiplier": 19.9
+  },
+  "bom": [
+    {
+      "id": "V2-BOM-01",
+      "part": "モノリス一体防水屋根・側壁・前後ひさし膜（無裁断・318mm接地スカート一体）",
+      "spec": "コメリ ブルーシート 3.6×5.4m 中厚手 #2000 (品番 g352755, 実寸3.50×5.30m, 耐水圧≥3200mm)",
+      "store": "コメリ（店頭受取・送料¥0）",
+      "qty": 1,
+      "mass_kg": 1.95,
+      "cost_jpy": 1280,
+      "is_outer_case": false,
+      "is_cnc": false,
+      "is_electric": false,
+      "intl_shipping_jpy": 0
+    },
+    {
+      "id": "V2-BOM-02",
+      "part": "無縫製24cm折紙バスタブ床＋前後傾斜妻壁・44cm重複エアロック扉（ゼロロス2D裁断）",
+      "spec": "コメリ ブルーシート 3.6×5.4m 中厚手 #2000 (品番 g352755, 余剰材でS字迷路庇＆マスト脚パッド)",
+      "store": "コメリ（店頭受取・送料¥0）",
+      "qty": 1,
+      "mass_kg": 1.95,
+      "cost_jpy": 1280,
+      "is_outer_case": false,
+      "is_cnc": false,
+      "is_electric": false,
+      "intl_shipping_jpy": 0
+    },
+    {
+      "id": "V2-BOM-03",
+      "part": "3本柱同軸二重鋼管マスト外筒（400mm×12節＝1.6m×3本）＋中央軒用鋼管クロスバー（300mm×2本）",
+      "spec": "コメリ 農業用直管パイプ Ø19.1×t1.0×5400mm (品番 g345485, 亜鉛めっき高張力鋼管 STK400相当・端材0mm)",
+      "store": "コメリ（店頭受取・送料¥0）",
+      "qty": 1,
+      "mass_kg": 2.41,
+      "cost_jpy": 818,
+      "is_outer_case": false,
+      "is_cnc": false,
+      "is_electric": false,
+      "intl_shipping_jpy": 0
+    },
+    {
+      "id": "V2-BOM-04",
+      "part": "3本柱同軸マスト内芯・位相200mmずらし継手レス鋼管コア（全節内包ネスト収納）",
+      "spec": "コメリ イボ付支柱 Ø16×2100mm ×3本 (品番 g2118455, ¥175×3, 外筒ID17.1mmへ隙間1.1mm密着挿入)",
+      "store": "コメリ（店頭受取・送料¥0）",
+      "qty": 3,
+      "mass_kg": 0.84,
+      "cost_jpy": 525,
+      "is_outer_case": false,
+      "is_cnc": false,
+      "is_electric": false,
+      "intl_shipping_jpy": 0
+    },
+    {
+      "id": "V2-BOM-05",
+      "part": "高張力SD390異形鉄筋グラウンドアンカー＆デッドマン横梁（330mm×12本）",
+      "spec": "コメリ 異形丸鋼 D10×4000mm SD390 (品番 g487273, 4m長尺1本から330mm×12本を定寸切り出し)",
+      "store": "コメリ（店頭受取・送料¥0）",
+      "qty": 1,
+      "mass_kg": 2.24,
+      "cost_jpy": 335,
+      "is_outer_case": false,
+      "is_cnc": false,
+      "is_electric": false,
+      "intl_shipping_jpy": 0
+    },
+    {
+      "id": "V2-BOM-06",
+      "part": "建築用片面ブチル気密防水テープ（後部妻壁防水シール・S字迷路庇・換気網固定）",
+      "spec": "日東電工 全天テープ No.6931 片面ブチル 50mm×20m (品番 g994743, 厚0.4mm・23N/25mm・-10℃耐寒密着)",
+      "store": "コメリ（店頭受取・送料¥0）",
+      "qty": 1,
+      "mass_kg": 0.4,
+      "cost_jpy": 538,
+      "is_outer_case": false,
+      "is_cnc": false,
+      "is_electric": false,
+      "intl_shipping_jpy": 0
+    },
+    {
+      "id": "V2-BOM-07",
+      "part": "UV耐候5mm主稜張綱・連続越屋根ストームストラップ・10点暴風ガイライン・収納結束兼用",
+      "spec": "宮島化学工業 職人仕様 PPロープ 5mm×50m UV剤入 (品番 g2480023, 破断強度2750N, 外枠ケース代替結束兼用)",
+      "store": "コメリ（店頭受取・送料¥0）",
+      "qty": 1,
+      "mass_kg": 0.48,
+      "cost_jpy": 398,
+      "is_outer_case": false,
+      "is_cnc": false,
+      "is_electric": false,
+      "intl_shipping_jpy": 0
+    },
+    {
+      "id": "V2-BOM-08",
+      "part": "10点ハイブリッド・アースフルーク（埋設デッドマン／地表土嚢兼用）暴風アンカーバッグ",
+      "spec": "コメリ MUSBIC 口紐付き土のう袋 48×62cm 10枚入 (品番 g2172932, 豪雨飽和泥土でも把持力3,100N超)",
+      "store": "コメリ（店頭受取・送料¥0）",
+      "qty": 1,
+      "mass_kg": 0.35,
+      "cost_jpy": 298,
+      "is_outer_case": false,
+      "is_cnc": false,
+      "is_electric": false,
+      "intl_shipping_jpy": 0
+    },
+    {
+      "id": "V2-BOM-09",
+      "part": "3本柱マスト上下端保護＆張綱係止フック付キャップ＋無穴扉トグル兼用（10個入）",
+      "spec": "コメリ ハウスパイプキャップ 19・22mm兼用フック付 10個入 (品番 g1985975, 6個マスト上下端＋4個扉トグル/予備)",
+      "store": "コメリ（店頭受取・送料¥0）",
+      "qty": 1,
+      "mass_kg": 0.05,
+      "cost_jpy": 38,
+      "is_outer_case": false,
+      "is_cnc": false,
+      "is_electric": false,
+      "intl_shipping_jpy": 0
+    },
+    {
+      "id": "V2-BOM-10",
+      "part": "180°S字迷路庇・高所煙突換気＆低所吸気スロット用 防虫メッシュスクリーン",
+      "spec": "ダイソー 網戸替え用防虫網 24メッシュ 91×200cm (品番 4549131884203, 1.82m2全面パッシブ換気)",
+      "store": "ダイソー（店頭購入・送料¥0）",
+      "qty": 1,
+      "mass_kg": 0.09,
+      "cost_jpy": 110,
+      "is_outer_case": false,
+      "is_cnc": false,
+      "is_electric": false,
+      "intl_shipping_jpy": 0
+    },
+    {
+      "id": "V2-BOM-11",
+      "part": "非電動パッシブ高反射アルミ発泡PE床断熱マット ×2枚",
+      "spec": "ダイソー アルミシート厚手タイプ 120×70cm×3mm ×2枚 (品番 4984343912236, 電源不要・放射反射率95%)",
+      "store": "ダイソー（店頭購入・送料¥0）",
+      "qty": 2,
+      "mass_kg": 0.16,
+      "cost_jpy": 220,
+      "is_outer_case": false,
+      "is_cnc": false,
+      "is_electric": false,
+      "intl_shipping_jpy": 0
+    },
+    {
+      "id": "V2-BOM-12",
+      "part": "初回製作時パイプ・鉄筋定寸切断用ハンド金ノコ（完全DIY・外注切削ゼロ証明）",
+      "spec": "ダイソー 金属用金ノコギリ (初回定寸切断後は自宅保管可・携行重量対象外)",
+      "store": "ダイソー（店頭購入・送料¥0）",
+      "qty": 1,
+      "mass_kg": 0.0,
+      "cost_jpy": 110,
+      "is_outer_case": false,
+      "is_cnc": false,
+      "is_electric": false,
+      "intl_shipping_jpy": 0
+    }
+  ],
+  "setup_steps": [
+    {
+      "step": 1,
+      "action": "PP結束ストラップ2本を解きロールを展開、無縫製24cm折紙バスタブ床を四隅折り上げ配置",
+      "time_s": 75
+    },
+    {
+      "step": 2,
+      "action": "3本柱同軸二重鋼管マスト（外筒Ø19.1×400mm×12節＋内芯Ø16位相200mmずらし）を工具不要差込連結",
+      "time_s": 75
+    },
+    {
+      "step": 3,
+      "action": "モノリス屋根膜を稜線へ掛け、前・中・後3本マストを1.64mへ起立＋前後V字アンカー4点固定",
+      "time_s": 120
+    },
+    {
+      "step": 4,
+      "action": "連続越屋根ストームストラップ3本＆10点アースフルーク（通常は地表土嚢＋杭、台風時は22cm埋設）を展開緊張",
+      "time_s": 150
+    },
+    {
+      "step": 5,
+      "action": "180°S字迷路庇・前面440mm重複エアロック扉を無穴トグル固定し、アルミ発泡断熱マット2枚を敷設して完了",
+      "time_s": 90
+    }
+  ]
+}

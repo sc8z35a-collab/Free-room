@@ -1,0 +1,73 @@
+{
+  "simulation": "V2-SIM-5: Hybrid Earth-Fluke Deadman Geotechnical Pullout (4 Soils + ±15° Error)",
+  "passed": true,
+  "checks": {
+    "standard_loam_30ms_SF_ge_4_0": true,
+    "moist_clay_30ms_SF_ge_3_0": true,
+    "saturated_typhoon_mud_30ms_SF_ge_2_0": true,
+    "loose_wet_sand_30ms_SF_ge_1_3": true,
+    "mideave_pipe_crossbar_30ms_SF_ge_1_8": true,
+    "d10_rebar_crossbar_30ms_SF_ge_1_5": true
+  },
+  "anchor_spec": {
+    "fluke_pad_mm": [
+      200.0,
+      330.0
+    ],
+    "nominal_burial_depth_mm": 220.0,
+    "penalized_eval_depth_mm": 187.0,
+    "human_angle_error_deg": 15.0,
+    "normal_weather_mode": "地表25kg土嚢＋斜め打設SD390鉄筋（掘削ゼロ・芝生無傷）",
+    "storm_mode": "200×330mmアースフルーク浅埋設(22cm)デッドマン（豪雨飽和泥土対応）"
+  },
+  "fea_anchor_demands": {
+    "25ms_N": {
+      "ridge_fluke_N": 86.5,
+      "mideave_fluke_N": 507.0,
+      "corner_fluke_N": 320.6
+    },
+    "30ms_N": {
+      "ridge_fluke_N": 379.2,
+      "mideave_fluke_N": 719.0,
+      "corner_fluke_N": 455.6
+    },
+    "peak_25ms_N": 507.0,
+    "peak_30ms_N": 719.0
+  },
+  "soil_classes": {
+    "standard_garden_loam": {
+      "label": "標準芝生ローム土",
+      "earth_fluke_cap_N": 5600.0,
+      "D_eff_mm": 187.0,
+      "SF_25ms_min": 11.05,
+      "SF_30ms_min": 7.79
+    },
+    "moist_garden_clay": {
+      "label": "湿潤粘性土",
+      "earth_fluke_cap_N": 5600.0,
+      "D_eff_mm": 187.0,
+      "SF_25ms_min": 11.05,
+      "SF_30ms_min": 7.79
+    },
+    "saturated_typhoon_mud": {
+      "label": "豪雨飽和軟弱泥土（最悪条件）",
+      "earth_fluke_cap_N": 3270.8,
+      "D_eff_mm": 187.0,
+      "SF_25ms_min": 6.45,
+      "SF_30ms_min": 4.55
+    },
+    "loose_wet_sand": {
+      "label": "湿潤緩砂質土（無粘着最悪）",
+      "earth_fluke_cap_N": 1291.1,
+      "D_eff_mm": 187.0,
+      "SF_25ms_min": 2.55,
+      "SF_30ms_min": 1.8
+    }
+  },
+  "crossbar_bending_30ms": {
+    "mideave_pipe19_MPa": 126.78,
+    "mideave_pipe19_SF": 1.85,
+    "d10_rebar_MPa": 220.14,
+    "d10_rebar_SF": 1.77
+  }
+}

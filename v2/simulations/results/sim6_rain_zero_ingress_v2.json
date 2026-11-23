@@ -1,0 +1,65 @@
+{
+  "simulation": "V2-SIM-6: 7-Layer 100% Rain Non-Ingress Guarantee (50k Lagrangian Droplets + 150mm/h + 200mm Flood)",
+  "passed": true,
+  "checks": {
+    "lagrangian_50k_droplets_ZERO_ingress": true,
+    "splashback_ZERO_ingress": true,
+    "manning_150mmh_film_under_0_25mm_and_no_ponding": true,
+    "flash_flood_200mm_positive_freeboard_and_SF_ge_12": true,
+    "roof_hydrostatic_30ms_SF_ge_15": true,
+    "zero_roof_needle_holes_and_440mm_door_lap": true,
+    "condensation_rolloff_margin_ge_15deg_zero_drip": true
+  },
+  "layers": {
+    "layer1_lagrangian_50k_raindrops": {
+      "n_droplets_tracked": 50000,
+      "wind_speed_ms": 30.0,
+      "rain_intensity_mmh": 150.0,
+      "hit_monolithic_roof": 6260,
+      "hit_outer_labyrinth_baffle": 13223,
+      "hit_inner_storm_weir": 4419,
+      "deflected_by_sloped_nose": 10686,
+      "entered_labyrinth_slot": 10,
+      "breached_interior_vent_count": 0,
+      "ingress_probability_pct": 0.0
+    },
+    "layer2_splashback_shingle": {
+      "max_ejecta_speed_ms": 3.18,
+      "shingle_vertical_overlap_mm": 240.0,
+      "ground_drip_skirt_mm": 318.1,
+      "splashback_ingress_count": 0,
+      "blocked_by_continuous_outer_wall": true
+    },
+    "layer3_manning_runoff_150mmh": {
+      "roof_slope_deg": 40.48,
+      "water_film_thickness_mm": 0.2284,
+      "film_runoff_velocity_ms": 0.274,
+      "ponding_stability_lambda": 0.46381,
+      "film_sag_deflection_mm": 2.3192
+    },
+    "layer4_200mm_flash_flood_bathtub": {
+      "flood_depth_tested_mm": 200.0,
+      "bathtub_wall_height_mm": 240.0,
+      "freeboard_margin_mm": 40.0,
+      "bathtub_corner_cuts": 0,
+      "floor_hydrostatic_SF": 16.0
+    },
+    "layer5_roof_hydrostatic_30ms": {
+      "peak_driving_pressure_Pa": 1503.5,
+      "membrane_hydrostatic_capacity_Pa": 31381.3,
+      "roof_hydrostatic_SF": 20.87
+    },
+    "layer6_zero_seam_airlock": {
+      "roof_seams_and_needle_holes": 0,
+      "front_airlock_double_lap_mm": 440.0,
+      "acecross011_rear_gable_peel_N_per_m": 920.0
+    },
+    "layer7_condensation_runoff": {
+      "ldpe_contact_angle_deg": 98.0,
+      "critical_rolloff_angle_deg": 25.0,
+      "actual_roof_slope_deg": 40.48,
+      "rolloff_angle_margin_deg": 15.48,
+      "interior_drip_grams": 0.0
+    }
+  }
+}

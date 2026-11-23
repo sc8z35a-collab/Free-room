@@ -1,0 +1,44 @@
+{
+  "simulation": "V2-SIM-8: 50,000-Trial Stochastic Monte Carlo Reliability & Sobol Sensitivity",
+  "passed": true,
+  "checks": {
+    "structural_survival_ge_99_90pct": true,
+    "geotech_anchor_survival_ge_99_50pct": true,
+    "rain_zero_ingress_100_000pct": true,
+    "combined_system_reliability_ge_99_40pct": true,
+    "p01_worst_1pct_mast_buckle_SF_ge_1_5": true,
+    "p01_worst_1pct_hydrostatic_SF_ge_12_0": true
+  },
+  "n_trials": 50000,
+  "n_uncertain_variables": 16,
+  "reliability": {
+    "P_structural_survival_pct": 100.0,
+    "beta_structural_sigma": 4.26,
+    "P_geotech_survival_pct": 100.0,
+    "beta_geotech_sigma": 4.26,
+    "P_rain_zero_ingress_pct": 100.0,
+    "rain_ingress_failures_out_of_50k": 0,
+    "P_combined_survival_pct": 100.0,
+    "beta_combined_sigma": 4.26
+  },
+  "percentiles_p01_worst_1pct": {
+    "mast_yield_SF_p01": 5.82,
+    "mast_buckle_SF_p01": 2.61,
+    "rope_knotted_SF_p01": 5.3,
+    "memb_tensile_SF_p01": 14.11,
+    "anchor_pullout_SF_p01": 10.05,
+    "hydrostatic_SF_p01": 18.05
+  },
+  "sobol_variance_share_pct": {
+    "wind_azimuth": 51.65,
+    "wind_gust_speed": 35.8,
+    "joint_stiffness": 8.04,
+    "gust_turbulence": 4.28,
+    "ground_slope": 0.23,
+    "soil_cohesion": 0.01,
+    "flood_wetting": 0.0,
+    "steel_yield": 0.0,
+    "peg_angle_error": 0.0,
+    "soil_friction_phi": 0.0
+  }
+}

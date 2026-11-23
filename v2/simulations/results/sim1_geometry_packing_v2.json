@@ -1,0 +1,119 @@
+{
+  "simulation": "V2-SIM-1: 3D Solid Geometry, Zero-Case Soft-Roll Packing & 2D Cutting (Trimesh)",
+  "passed": true,
+  "checks": {
+    "envelope_plus5pct_within_520x160x480mm": true,
+    "zero_outer_hard_case_parts": true,
+    "trimesh_3d_zero_collisions": true,
+    "concentric_nesting_clearances_ok": true,
+    "sheet2_2d_zero_overlap_cutting": true,
+    "realistic_bulk_packing_under_65pct": true,
+    "deployed_watertight_stl_verified": true
+  },
+  "deployed_geometry": {
+    "floor_width_m": 3.0,
+    "floor_length_m": 2.7,
+    "floor_area_m2": 8.100000000000001,
+    "tatami_equiv": 5.0,
+    "peak_height_m": 1.64,
+    "eave_height_m": 0.36,
+    "roof_slope_deg": 40.48,
+    "awning_front_m": 0.4,
+    "awning_rear_m": 0.4,
+    "ground_skirt_m": 0.318,
+    "bathtub_wall_h_m": 0.24,
+    "interior_volume_m3": 8.1,
+    "volume_expansion_vs_limit": 202.8,
+    "volume_expansion_vs_pack": 243.0,
+    "area_expansion_ratio": 97.4,
+    "stl_info": {
+      "stl_path": "/home/antigravity/sc8z35a-collab/Free-room/v2/simulations/results/aero_prism_p300.stl",
+      "main_watertight": true,
+      "main_volume_m3": 8.1,
+      "outer_hull_volume_m3": 9.8307,
+      "theoretical_volume_m3": 8.1,
+      "volume_error_pct": 0.0,
+      "awn_front_watertight": true,
+      "awn_rear_watertight": true,
+      "total_triangles": 32,
+      "bbox_m": [
+        3.0,
+        3.5,
+        1.64
+      ]
+    }
+  },
+  "metal_nesting_3d": {
+    "n_metal_solids": 41,
+    "watertight_solids": 41,
+    "n_pairs_checked": 820,
+    "collision_count": 0,
+    "colliding_pairs": [],
+    "min_3d_clearance_mm": 0.55,
+    "metal_core_bbox_mm": [
+      400.0,
+      68.8,
+      151.1
+    ],
+    "metal_core_vol_L": 4.158,
+    "concentric_clear_mast_diam_mm": 1.1,
+    "concentric_clear_anchor_diam_mm": 6.6,
+    "outer_tube_gap_mm": 2.9
+  },
+  "sheet2_2d_cutting": {
+    "sheet2_size_m": [
+      5.3,
+      3.5
+    ],
+    "bathtub_blank_m": [
+      3.18,
+      3.48
+    ],
+    "bathtub_fits_sheet_y": true,
+    "gable_strip_m": [
+      2.105,
+      3.5
+    ],
+    "min_cut_clearance_mm": 273.17,
+    "flap_center_gap_mm": 60.0,
+    "material_utilization_pct": 92.92,
+    "offcut_for_patches_m2": 1.314,
+    "zero_overlap_verified": true
+  },
+  "soft_roll_packing": {
+    "nominal_roll_mm": [
+      495.0,
+      148.0,
+      455.0
+    ],
+    "worst_case_plus5pct_mm": [
+      519.75,
+      155.4,
+      477.75
+    ],
+    "hard_limit_mm": [
+      520.0,
+      160.0,
+      480.0
+    ],
+    "overshoot_mm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "breakdown_L": {
+      "nested_steel_core": 4.16,
+      "sheet1_monolith_roof": 4.51,
+      "sheet2_bathtub_gables": 4.51,
+      "passive_alu_foam_mats": 4.54,
+      "uv_pp_rope_50m": 1.27,
+      "caps_clips_mesh_tape": 1.45
+    },
+    "total_realistic_bulk_L": 20.43,
+    "soft_roll_envelope_L": 33.33,
+    "hard_limit_vol_L": 39.94,
+    "fill_ratio_nom_pct": 61.28,
+    "fill_ratio_limit_pct": 51.15,
+    "spare_margin_L": 12.91
+  }
+}
