@@ -109,17 +109,19 @@ def simulate_50k_lagrangian_raindrops(u_wind_ms=30.0, rain_mmh=150.0, n_drops=50
         ya_new = ya + 0.5 * (vya + vya_new) * dt
         za_new = za + 0.5 * (vza + vza_new) * dt
 
-        # Check EXACT solid barrier collisions (continuous segment intersection!):
-        # 1) Hit SOLID monolithic roof surface (z <= z_roof for any y <= y_cowl, crossing from above!)
-        c_roof = (za >= z_roof) & (za_new <= z_roof) & (ya_new <= y_cowl)
+        # Check EXACT solid barrier collisions (watertight continuous segment intersection, zero seam cracks!):
+        # 1) Hit SOLID monolithic roof surface (z <= z_roof for y_at_roof <= y_cowl, crossing from above!)
+        frac_roof = np.where(np.abs(za - za_new) > 1e-9, (za - z_roof) / (za - za_new), 0.5)
+        y_at_roof = ya + np.clip(frac_roof, 0.0, 1.0) * (ya_new - ya)
+        c_roof = (za >= z_roof) & (za_new <= z_roof) & (y_at_roof <= y_cowl)
         # 2) Hit outer storm cowl baffle apron (plane y = y_cowl, z in [z_baffle_bot, z_roof])
         frac_cowl = np.where(np.abs(ya - ya_new) > 1e-9, (ya - y_cowl) / (ya - ya_new), 0.5)
         z_at_cowl = za + np.clip(frac_cowl, 0.0, 1.0) * (za_new - za)
-        c_baffle = (ya >= y_cowl) & (ya_new <= y_cowl) & (z_at_cowl >= z_baffle_bot) & (z_at_cowl <= z_roof)
-        # 3) Hit INNER upturned storm weir dam (plane y = y_weir, z in [z_weir_bot, z_weir_top] -> 120mm overlap!)
+        c_baffle = (~c_roof) & (ya >= y_cowl) & (ya_new <= y_cowl) & (z_at_cowl >= z_baffle_bot) & (z_at_cowl <= z_roof)
+        # 3) Hit CONTINUOUS solid front gable wall + upturned inner storm weir (plane y = y_weir, ALL z <= z_weir_top!)
         frac_weir = np.where(np.abs(ya - ya_new) > 1e-9, (ya - y_weir) / (ya - ya_new), 0.5)
         z_at_weir = za + np.clip(frac_weir, 0.0, 1.0) * (za_new - za)
-        c_weir = (~c_roof) & (~c_baffle) & (ya >= y_weir) & (ya_new <= y_weir) & (z_at_weir >= z_weir_bot) & (z_at_weir <= z_weir_top)
+        c_weir = (~c_roof) & (~c_baffle) & (ya >= y_weir) & (ya_new <= y_weir) & (z_at_weir <= z_weir_top)
         # 4) Hit sloped aerodynamic vestibule nose/door wall (from (y=y_cowl, z=z_eave) to (y=y_weir, z=z_weir_bot))
         y_wall_at_z = y_cowl - (y_cowl - y_weir) * np.clip((za_new - z_eave) / (z_weir_bot - z_eave), 0.0, 1.0)
         c_nose = (~c_roof) & (~c_baffle) & (~c_weir) & (za_new < z_weir_bot) & (ya_new <= y_wall_at_z)
@@ -128,8 +130,8 @@ def simulate_50k_lagrangian_raindrops(u_wind_ms=30.0, rain_mmh=150.0, n_drops=50
         if np.any(in_slot):
             entered_labyrinth_slot += int(np.sum(in_slot))
             max_z_in_slot = max(max_z_in_slot, float(np.max(za_new[in_slot])))
-        # 6) BREACH condition: reach recessed interior ridge vent plane y <= y_vent at z in [z_baffle_bot, z_roof]!
-        c_breach = (ya_new <= y_vent) & (za_new >= z_baffle_bot) & (za_new <= z_roof) & (~c_roof) & (~c_baffle) & (~c_weir) & (~c_nose)
+        # 6) BREACH condition: reach recessed interior ridge vent plane y <= y_vent below roof!
+        c_breach = (ya_new <= y_vent) & (za_new <= z_roof) & (~c_roof) & (~c_baffle) & (~c_weir) & (~c_nose)
         # 7) Out of domain
         c_out = (za_new > z_roof + 0.65) | (za_new < 0.0) | ((ya_new < 1.0) & (za_new > z_roof))
 
