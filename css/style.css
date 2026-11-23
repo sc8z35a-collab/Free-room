@@ -104,6 +104,13 @@ body {
   flex-direction: column;
 }
 
+/* Top-Left Dock: V1 / V2 Icon-Only Version Switcher (Zero Text) */
+.dock-top-left {
+  top: max(var(--edge-pad), env(safe-area-inset-top));
+  left: max(var(--edge-pad), env(safe-area-inset-left));
+  flex-direction: row;
+}
+
 /* Top-Right Utility Dock: Info Sheet & Fullscreen */
 .dock-top-right {
   top: max(var(--edge-pad), env(safe-area-inset-top));
@@ -349,8 +356,8 @@ body {
 
 .drawer-tabs {
   display: flex;
-  gap: 4px;
-  padding: 10px 20px 0;
+  gap: 2px;
+  padding: 8px 14px 0;
   border-bottom: 1px solid var(--hairline);
   overflow-x: auto;
   flex-shrink: 0;
@@ -360,8 +367,8 @@ body {
   appearance: none;
   border: none;
   background: transparent;
-  padding: 8px 12px;
-  font-size: 12.5px;
+  padding: 8px 9px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--ink-muted);
   border-bottom: 2px solid transparent;
@@ -515,6 +522,98 @@ body {
   color: #333333;
 }
 
+/* Version Switcher Bar inside Info Drawer */
+.drawer-version-bar {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  padding: 10px 18px 8px;
+  border-bottom: 1px solid var(--hairline);
+  background: #fafafa;
+}
+
+.ver-seg {
+  appearance: none;
+  border: 1px solid var(--hairline-strong);
+  background: #ffffff;
+  color: var(--ink-muted);
+  border-radius: 9px;
+  padding: 8px 8px;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ver-seg:hover {
+  background: var(--surface-hover);
+  color: var(--ink);
+}
+
+.ver-seg.is-active {
+  background: var(--active-bg);
+  color: var(--active-fg);
+  border-color: var(--active-bg);
+}
+
+/* Colab Pro A100 Launch Card inside V2 Info Drawer */
+.colab-card {
+  border: 1.5px solid #111111;
+  border-radius: 12px;
+  padding: 14px 16px;
+  background: #fafafa;
+  margin-bottom: 16px;
+}
+
+.colab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: #111111;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.colab-btn:hover {
+  background: #27272a;
+}
+
+.version-links {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.version-link {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--hairline-strong);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.version-link:hover {
+  background: var(--surface-hover);
+}
+
 /* ==========================================================================
    MOBILE LANDSCAPE FULLSCREEN & COMPACT VIEWPORT RESPONSIVENESS
    ========================================================================== */
@@ -571,7 +670,7 @@ body {
   }
 
   .dock-left {
-    top: max(12px, env(safe-area-inset-top));
+    top: calc(max(12px, env(safe-area-inset-top)) + 54px);
     transform: none;
     flex-direction: row;
   }

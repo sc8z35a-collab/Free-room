@@ -246,6 +246,14 @@ btnScale.addEventListener('click', () => {
   btnScale.classList.toggle('is-active', next);
 });
 
+// Top-Left Version Switcher: V1 button navigates to unified root viewer on V1
+const btnVerV1 = document.getElementById('btn-ver-v1');
+if (btnVerV1) {
+  btnVerV1.addEventListener('click', () => {
+    window.location.href = '../index.html?v=1';
+  });
+}
+
 // ---------------------------------------------------------------------------
 // TOP-RIGHT DOCK: FULLSCREEN & COLLAPSIBLE ENGINEERING INFO SHEET
 // ---------------------------------------------------------------------------
