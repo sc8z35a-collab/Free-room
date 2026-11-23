@@ -1,0 +1,143 @@
+{
+  "project": "FREE-ROOM V2 AERO-PRISM P300",
+  "hardware": {
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "vram_gb": 79.25,
+    "profile": "A100_80GB_ULTRA",
+    "elapsed_sec": 204.01
+  },
+  "all_passed": true,
+  "checks": {
+    "budget_strictly_le_6000_jpy": true,
+    "lbm_les_3azimuth_streamlined_Cd_le_1_05": true,
+    "rain_2M_droplets_ZERO_interior_ingress": true,
+    "fsi_30ms_dynamic_mast_yield_SF_ge_2_0": true,
+    "fsi_30ms_dynamic_buckling_SF_ge_1_8": true,
+    "geotech_saturated_typhoon_mud_30ms_SF_ge_2_0": true,
+    "mc_500k_structural_and_geotech_ge_99_9pct": true,
+    "mc_500k_rain_100_000pct_zero_leak": true,
+    "hygrothermal_72h_summer_winter_typhoon_all_pass": true
+  },
+  "module1_lbm_les": {
+    "az_0": {
+      "azimuth_deg": 0,
+      "voxels": 7680000,
+      "voxel_mm": 37.5,
+      "steps": 1800,
+      "frontal_area_m2": 2.888,
+      "Cd_mean": 0.6444,
+      "CL_mean": 0.2911,
+      "F_drag_30ms_N": 1026.1,
+      "F_lift_30ms_N": 1634.4
+    },
+    "az_45": {
+      "azimuth_deg": 45,
+      "voxels": 7680000,
+      "voxel_mm": 37.5,
+      "steps": 1800,
+      "frontal_area_m2": 5.12,
+      "Cd_mean": 0.4408,
+      "CL_mean": 0.2373,
+      "F_drag_30ms_N": 1244.2,
+      "F_lift_30ms_N": 1334.4
+    },
+    "az_90": {
+      "azimuth_deg": 90,
+      "voxels": 7680000,
+      "voxel_mm": 37.5,
+      "steps": 1800,
+      "frontal_area_m2": 5.316,
+      "Cd_mean": 0.61,
+      "CL_mean": 0.2228,
+      "F_drag_30ms_N": 1787.6,
+      "F_lift_30ms_N": 1261.2
+    }
+  },
+  "module2_rain_2M": {
+    "n_droplets": 2000000,
+    "n_splash_particles": 2000000,
+    "breached_vent_count": 0,
+    "breached_splash_count": 0,
+    "splash_max_height_at_outer_wall_m": 0.4746,
+    "hit_roof": 244884,
+    "hit_outer_baffle": 535647,
+    "hit_inner_weir": 542252,
+    "hit_sloped_nose": 54616,
+    "max_manning_film_mm": 0.2691,
+    "flood_freeboard_mm": 40.0,
+    "flood_hydrostatic_SF": 16.0,
+    "roof_hydrostatic_SF": 20.87,
+    "zero_ingress_proven": true
+  },
+  "module3_fsi_dynamic": {
+    "n_fsi_steps": 4000,
+    "peak_dynamic_disp_mm": 33.75,
+    "peak_mast_vm_MPa": 42.88,
+    "mast_yield_SF": 5.48,
+    "dynamic_buckling_SF": 4.14,
+    "peak_anchor_load_N": 572.4,
+    "rope_knotted_SF": 9.9,
+    "geotech_4soils_30ms": {
+      "Standard Loam": {
+        "cap_N": 5600.0,
+        "SF_30ms": 9.78
+      },
+      "Moist Clay": {
+        "cap_N": 5600.0,
+        "SF_30ms": 9.78
+      },
+      "Saturated Typhoon Mud": {
+        "cap_N": 3270.8,
+        "SF_30ms": 5.71
+      },
+      "Loose Wet Sand": {
+        "cap_N": 1291.1,
+        "SF_30ms": 2.26
+      }
+    }
+  },
+  "module4_montecarlo_sobol": {
+    "n_mc_trials": 500000,
+    "n_sobol_evals": 1179648,
+    "P_structural_pct": 100.0,
+    "P_geotech_pct": 100.0,
+    "P_rain_zero_ingress_pct": 100.0,
+    "p01_buckle_SF": 5.49,
+    "p01_hydrostatic_SF": 18.38,
+    "sobol_S1_pct": {
+      "Wind Speed U": 46.54,
+      "Wind Azimuth": 31.31,
+      "Joint Knockdown": 10.42,
+      "Gust Turb": 5.66,
+      "Pipe Wall t": 2.81,
+      "Steel E": 2.15,
+      "Ground Slope": 0.21,
+      "Steel Sy": 0.0
+    },
+    "sobol_ST_pct": {
+      "Wind Speed U": 46.54,
+      "Wind Azimuth": 31.31,
+      "Joint Knockdown": 10.42,
+      "Gust Turb": 5.66,
+      "Pipe Wall t": 2.85,
+      "Steel E": 2.19,
+      "Ground Slope": 0.27,
+      "Steel Sy": 0.0
+    }
+  },
+  "module5_hygrothermal_72h": {
+    "summer_38C": {
+      "peak_dT_C": 4.24,
+      "max_CO2_ppm": 587.4,
+      "interior_drip_g": 0.0
+    },
+    "winter_minus5C": {
+      "max_CO2_ppm": 914.3,
+      "interior_drip_g": 0.0
+    },
+    "typhoon_100pctRH": {
+      "max_CO2_ppm": 513.8,
+      "interior_drip_g": 0.0
+    }
+  }
+}
