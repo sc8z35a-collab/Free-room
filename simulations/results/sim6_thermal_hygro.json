@@ -1,0 +1,53 @@
+{
+  "simulation": "SIM-6: Coupled Thermal, Psychrometric, Stack Ventilation & Condensation (SciPy ODE)",
+  "solver": "SciPy RK45 + Buck/ASHRAE Psychrometrics + Stack Buoyancy Flow",
+  "summer_scenario": {
+    "T_ambient_C": 34.0,
+    "T_roof_outer_C": 41.88,
+    "T_indoor_peak_C": 34.61,
+    "delta_T_above_ambient_C": 0.61,
+    "ventilation_ACH": 11.4
+  },
+  "winter_scenario": {
+    "T_ambient_C": 0.0,
+    "RH_ambient_pct": 85.0,
+    "T_indoor_C": 0.87,
+    "RH_indoor_pct": 93.5,
+    "indoor_dew_point_C": -0.06,
+    "inner_liner_temp_C": 0.65,
+    "condensation_safety_margin_C": 0.71,
+    "ventilation_m3_per_h": 135.9,
+    "CO2_steady_ppm": 685.0,
+    "floor_heat_loss_W_m2": 14.32,
+    "sleep_mat_R_value_US": 5.2
+  },
+  "checks": {
+    "summer_thermal_comfort": {
+      "pass": true,
+      "delta_T_C": 0.61,
+      "T_indoor_peak_C": 34.61,
+      "ventilation_ACH": 11.4,
+      "limit_max_delta_T_C": 3.0
+    },
+    "winter_air_quality_CO2": {
+      "pass": true,
+      "CO2_ppm": 685.0,
+      "ventilation_m3_h": 135.9,
+      "limit_max_ppm": 1000.0
+    },
+    "winter_zero_inner_condensation": {
+      "pass": true,
+      "inner_liner_temp_C": 0.65,
+      "indoor_dew_point_C": -0.06,
+      "margin_C": 0.71,
+      "inner_condensation_drip_g": 0.0
+    },
+    "winter_ground_insulation": {
+      "pass": true,
+      "floor_heat_loss_W_m2": 14.32,
+      "mat_R_value_US": 5.2,
+      "limit_max_W_m2": 15.0
+    }
+  },
+  "all_pass": true
+}
