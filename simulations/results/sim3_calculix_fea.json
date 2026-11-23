@@ -1,0 +1,144 @@
+{
+  "simulation": "SIM-3: CalculiX (ccx 2.21) 3D FEA — Nonlinear Static, Dual Buckling & Modal",
+  "solver": "CalculiX CrunchiX 2.21 (Quadratic B32R Pipe Beams + T3D2 Y-Bridle Tendon Network + *MASS)",
+  "node_count": 215,
+  "element_count": 206,
+  "strut_von_mises_MPa_12": [
+    8.48,
+    10.47,
+    13.98,
+    11.39,
+    16.68,
+    9.96,
+    15.18,
+    9.97,
+    16.67,
+    11.4,
+    13.99,
+    10.47
+  ],
+  "stresses_25ms_by_group": {
+    "MAST_LOW": {
+      "max_von_mises_MPa": 3.41
+    },
+    "MAST_MID": {
+      "max_von_mises_MPa": 4.42
+    },
+    "MAST_UP": {
+      "max_von_mises_MPa": 6.29
+    },
+    "STRUT_LOW": {
+      "max_von_mises_MPa": 13.27
+    },
+    "STRUT_UP": {
+      "max_von_mises_MPa": 16.68
+    },
+    "CABLE_GUY_TOP": {
+      "max_von_mises_MPa": 155.66
+    },
+    "CABLE_GUY_MID": {
+      "max_von_mises_MPa": 235.23
+    },
+    "CABLE_RIDGE": {
+      "max_von_mises_MPa": 156.52
+    },
+    "CABLE_RING": {
+      "max_von_mises_MPa": 80.66
+    },
+    "CABLE_SHROUD": {
+      "max_von_mises_MPa": 2.17
+    }
+  },
+  "stresses_20ms_by_group": {
+    "MAST_LOW": {
+      "max_von_mises_MPa": 1.53
+    },
+    "MAST_MID": {
+      "max_von_mises_MPa": 2.0
+    },
+    "MAST_UP": {
+      "max_von_mises_MPa": 2.84
+    },
+    "STRUT_LOW": {
+      "max_von_mises_MPa": 8.64
+    },
+    "STRUT_UP": {
+      "max_von_mises_MPa": 10.26
+    },
+    "CABLE_GUY_TOP": {
+      "max_von_mises_MPa": 99.67
+    },
+    "CABLE_GUY_MID": {
+      "max_von_mises_MPa": 150.16
+    },
+    "CABLE_RIDGE": {
+      "max_von_mises_MPa": 100.13
+    },
+    "CABLE_RING": {
+      "max_von_mises_MPa": 51.64
+    },
+    "CABLE_SHROUD": {
+      "max_von_mises_MPa": 0.99
+    }
+  },
+  "checks": {
+    "nonlinear_deflection_25ms_gust": {
+      "pass": true,
+      "max_disp_25ms_mm": 9.08,
+      "max_disp_20ms_mm": 5.83,
+      "apex_disp_25ms_mm": 4.69,
+      "limit_max_mm": 90.0
+    },
+    "cfrp_stress_safety_25ms": {
+      "pass": true,
+      "max_von_mises_MPa": 16.68,
+      "design_strength_MPa": 650.0,
+      "safety_factor": 38.97,
+      "limit_min_SF": 4.0
+    },
+    "dyneema_cable_safety_25ms": {
+      "pass": true,
+      "max_single_cable_tension_25ms_N": 480.3,
+      "max_guyline_tension_25ms_N": 530.3,
+      "max_guyline_tension_20ms_N": 356.6,
+      "breaking_load_N": 1962.0,
+      "safety_factor": 4.08,
+      "limit_min_SF": 2.2
+    },
+    "global_3d_buckling_25ms_gust": {
+      "pass": true,
+      "eigenvalue_SF_25ms_storm_FSI": 21.47,
+      "eigenvalue_SF_worst_downward_compression": 7.43,
+      "compression_modes": [
+        7.43,
+        7.43,
+        8.97,
+        15.97
+      ],
+      "limit_min_SF": 2.5
+    },
+    "membrane_tensile_safety_25ms": {
+      "pass": true,
+      "peak_membrane_tension_N_per_m": 1516.0,
+      "fabric_strength_N_per_m": 13500.0,
+      "safety_factor": 8.9,
+      "limit_min_SF": 3.5
+    },
+    "modal_vortex_resonance_avoidance": {
+      "pass": true,
+      "fundamental_freq_Hz": 17.34,
+      "first_6_modes_Hz": [
+        17.34,
+        25.4,
+        25.4,
+        32.41,
+        32.47,
+        32.47
+      ],
+      "karman_vortex_25ms_Hz": 1.0,
+      "detuning_ratio": 17.34,
+      "limit_min_ratio": 2.5
+    }
+  },
+  "all_pass": true
+}

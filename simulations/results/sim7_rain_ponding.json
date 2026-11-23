@@ -1,0 +1,42 @@
+{
+  "simulation": "SIM-7: Extreme 100 mm/h Rain Runoff, Hydrostatic Head & Ponding Stability",
+  "checks": {
+    "torrential_100mmh_sheet_runoff": {
+      "pass": true,
+      "rain_rate_mm_h": 100.0,
+      "water_film_thickness_mm": 0.1604,
+      "runoff_velocity_m_s": 0.226,
+      "roof_slope_deg": 28.3,
+      "limit_max_film_mm": 1.0
+    },
+    "roof_hydrostatic_waterproofing": {
+      "pass": true,
+      "roof_HH_mm": 3000.0,
+      "storm_impingement_Pa": 1382.8,
+      "safety_factor": 21.3,
+      "limit_min_SF": 15.0
+    },
+    "floor_hydrostatic_waterproofing": {
+      "pass": true,
+      "floor_HH_mm": 5000.0,
+      "SF_vs_100mm_puddle": 50.0,
+      "SF_vs_occupant_on_wet_ground": 25.0
+    },
+    "ponding_instability_immunity": {
+      "pass": true,
+      "ponding_index_lambda": 0.003782,
+      "basin_formation_threshold_mm": 348.3,
+      "actual_water_deflection_mm": 1.3175,
+      "silpoly_wet_absorption_pct": 0.5,
+      "limit_max_lambda": 0.01
+    },
+    "bathtub_flood_freeboard": {
+      "pass": true,
+      "bathtub_rim_mm": 160.0,
+      "eave_overhang_mm": 200.0,
+      "freeboard_over_100mm_flood_mm": 60.0,
+      "limit_min_freeboard_mm": 50.0
+    }
+  },
+  "all_pass": true
+}

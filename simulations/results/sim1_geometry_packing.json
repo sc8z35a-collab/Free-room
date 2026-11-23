@@ -1,0 +1,550 @@
+{
+  "simulation": "SIM-1: 3D Solid Geometry, Collision & Exact 52x16x48cm Packing (Trimesh)",
+  "checks": {
+    "external_envelope_exact": {
+      "pass": true,
+      "measured_mm": [
+        520.0,
+        160.0,
+        480.0
+      ],
+      "limit_mm": [
+        520.0,
+        160.0,
+        480.0
+      ],
+      "volume_L": 39.936
+    },
+    "concentric_nesting_clearance": {
+      "pass": true,
+      "min_diametral_clearance_mm": 1.6,
+      "limit_min_mm": 1.0
+    },
+    "nested_stake_axial_fit": {
+      "pass": true,
+      "stake_pair_len_mm": 430.0,
+      "tube_bore_len_mm": 440.0,
+      "clearance_mm": 10.0
+    },
+    "bay_a_bounds_fit": {
+      "pass": true,
+      "max_bound_violation_mm": 0.0,
+      "bay_a_dims_mm": [
+        510.0,
+        470.0,
+        48.0
+      ]
+    },
+    "bay_a_zero_3d_collision": {
+      "pass": true,
+      "pair_count_checked": 435,
+      "collision_count": 0,
+      "min_inter_part_gap_mm": 1.4,
+      "limit_min_gap_mm": 0.5,
+      "collisions": []
+    },
+    "bay_b_conservative_packing": {
+      "pass": true,
+      "used_vol_L": 22.558,
+      "capacity_vol_L": 25.169,
+      "fill_pct": 89.63,
+      "margin_L": 2.61,
+      "limit_max_fill_pct": 92.0
+    },
+    "deployed_kinematic_closure": {
+      "pass": true,
+      "stl_watertight": true,
+      "mesh_volume_m3": 38.125,
+      "analytic_volume_m3": 38.125,
+      "volume_error_pct": 0.0,
+      "mast_closure_err_mm": 0.0,
+      "strut_closure_err_mm": 0.01,
+      "stl_exported": "/home/antigravity/sc8z35a-collab/Free-room/simulations/results/pavilion_d12_500.stl"
+    }
+  },
+  "components_bay_a": [
+    {
+      "name": "mast_carrier_1",
+      "bounds_min_mm": [
+        4.0,
+        2.0,
+        2.0
+      ],
+      "bounds_max_mm": [
+        464.0,
+        46.0,
+        46.0
+      ],
+      "volume_cm3": 691.5
+    },
+    {
+      "name": "mast_carrier_2",
+      "bounds_min_mm": [
+        4.0,
+        48.0,
+        2.0
+      ],
+      "bounds_max_mm": [
+        464.0,
+        92.0,
+        46.0
+      ],
+      "volume_cm3": 691.5
+    },
+    {
+      "name": "mast_carrier_3",
+      "bounds_min_mm": [
+        4.0,
+        94.0,
+        2.0
+      ],
+      "bounds_max_mm": [
+        464.0,
+        138.0,
+        46.0
+      ],
+      "volume_cm3": 691.5
+    },
+    {
+      "name": "strut_carrier_low_1",
+      "bounds_min_mm": [
+        4.0,
+        140.0,
+        0.5
+      ],
+      "bounds_max_mm": [
+        444.0,
+        164.0,
+        24.5
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_hi_1",
+      "bounds_min_mm": [
+        4.0,
+        152.7,
+        22.7
+      ],
+      "bounds_max_mm": [
+        444.0,
+        176.7,
+        46.7
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_low_2",
+      "bounds_min_mm": [
+        4.0,
+        165.4,
+        0.5
+      ],
+      "bounds_max_mm": [
+        444.0,
+        189.4,
+        24.5
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_hi_2",
+      "bounds_min_mm": [
+        4.0,
+        178.1,
+        22.7
+      ],
+      "bounds_max_mm": [
+        444.0,
+        202.1,
+        46.7
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_low_3",
+      "bounds_min_mm": [
+        4.0,
+        190.8,
+        0.5
+      ],
+      "bounds_max_mm": [
+        444.0,
+        214.8,
+        24.5
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_hi_3",
+      "bounds_min_mm": [
+        4.0,
+        203.5,
+        22.7
+      ],
+      "bounds_max_mm": [
+        444.0,
+        227.5,
+        46.7
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_low_4",
+      "bounds_min_mm": [
+        4.0,
+        216.2,
+        0.5
+      ],
+      "bounds_max_mm": [
+        444.0,
+        240.2,
+        24.5
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_hi_4",
+      "bounds_min_mm": [
+        4.0,
+        228.9,
+        22.7
+      ],
+      "bounds_max_mm": [
+        444.0,
+        252.9,
+        46.7
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_low_5",
+      "bounds_min_mm": [
+        4.0,
+        241.6,
+        0.5
+      ],
+      "bounds_max_mm": [
+        444.0,
+        265.6,
+        24.5
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_hi_5",
+      "bounds_min_mm": [
+        4.0,
+        254.3,
+        22.7
+      ],
+      "bounds_max_mm": [
+        444.0,
+        278.3,
+        46.7
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_low_6",
+      "bounds_min_mm": [
+        4.0,
+        267.0,
+        0.5
+      ],
+      "bounds_max_mm": [
+        444.0,
+        291.0,
+        24.5
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_hi_6",
+      "bounds_min_mm": [
+        4.0,
+        279.7,
+        22.7
+      ],
+      "bounds_max_mm": [
+        444.0,
+        303.7,
+        46.7
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_low_7",
+      "bounds_min_mm": [
+        4.0,
+        292.4,
+        0.5
+      ],
+      "bounds_max_mm": [
+        444.0,
+        316.4,
+        24.5
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_hi_7",
+      "bounds_min_mm": [
+        4.0,
+        305.1,
+        22.7
+      ],
+      "bounds_max_mm": [
+        444.0,
+        329.1,
+        46.7
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_low_8",
+      "bounds_min_mm": [
+        4.0,
+        317.8,
+        0.5
+      ],
+      "bounds_max_mm": [
+        444.0,
+        341.8,
+        24.5
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_hi_8",
+      "bounds_min_mm": [
+        4.0,
+        330.5,
+        22.7
+      ],
+      "bounds_max_mm": [
+        444.0,
+        354.5,
+        46.7
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_low_9",
+      "bounds_min_mm": [
+        4.0,
+        343.2,
+        0.5
+      ],
+      "bounds_max_mm": [
+        444.0,
+        367.2,
+        24.5
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_hi_9",
+      "bounds_min_mm": [
+        4.0,
+        355.9,
+        22.7
+      ],
+      "bounds_max_mm": [
+        444.0,
+        379.9,
+        46.7
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_low_10",
+      "bounds_min_mm": [
+        4.0,
+        368.6,
+        0.5
+      ],
+      "bounds_max_mm": [
+        444.0,
+        392.6,
+        24.5
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_hi_10",
+      "bounds_min_mm": [
+        4.0,
+        381.3,
+        22.7
+      ],
+      "bounds_max_mm": [
+        444.0,
+        405.3,
+        46.7
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_low_11",
+      "bounds_min_mm": [
+        4.0,
+        394.0,
+        0.5
+      ],
+      "bounds_max_mm": [
+        444.0,
+        418.0,
+        24.5
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_hi_11",
+      "bounds_min_mm": [
+        4.0,
+        406.7,
+        22.7
+      ],
+      "bounds_max_mm": [
+        444.0,
+        430.7,
+        46.7
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_low_12",
+      "bounds_min_mm": [
+        4.0,
+        419.4,
+        0.5
+      ],
+      "bounds_max_mm": [
+        444.0,
+        443.4,
+        24.5
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_carrier_hi_12",
+      "bounds_min_mm": [
+        4.0,
+        432.1,
+        22.7
+      ],
+      "bounds_max_mm": [
+        444.0,
+        456.1,
+        46.7
+      ],
+      "volume_cm3": 196.8
+    },
+    {
+      "name": "strut_caps_ferrules_tray",
+      "bounds_min_mm": [
+        448.0,
+        146.0,
+        2.0
+      ],
+      "bounds_max_mm": [
+        506.0,
+        290.0,
+        46.0
+      ],
+      "volume_cm3": 367.5
+    },
+    {
+      "name": "dyneema_cable_spool_tray",
+      "bounds_min_mm": [
+        448.0,
+        294.0,
+        2.0
+      ],
+      "bounds_max_mm": [
+        506.0,
+        466.0,
+        46.0
+      ],
+      "volume_cm3": 438.9
+    },
+    {
+      "name": "strike_cap_repair_tray",
+      "bounds_min_mm": [
+        468.0,
+        6.0,
+        2.0
+      ],
+      "bounds_max_mm": [
+        506.0,
+        136.0,
+        46.0
+      ],
+      "volume_cm3": 217.4
+    }
+  ],
+  "components_bay_b": [
+    {
+      "name": "roof_fly",
+      "material": "20D Ripstop Silpoly (Silicone/PU 3000mm HH, 0.5% water absorption)",
+      "area_m2": 25.52,
+      "pack_factor_L_per_m2": 0.155,
+      "packed_vol_L": 3.956
+    },
+    {
+      "name": "perimeter_wall",
+      "material": "20D Ripstop Silpoly (Silicone/PU 3000mm HH, UV-stabilized)",
+      "area_m2": 26.71,
+      "pack_factor_L_per_m2": 0.155,
+      "packed_vol_L": 4.14
+    },
+    {
+      "name": "bathtub_floor",
+      "material": "30D High-Tenacity Nylon 6.6 Ripstop (TPU/PU 5000mm HH)",
+      "area_m2": 21.23,
+      "pack_factor_L_per_m2": 0.215,
+      "packed_vol_L": 4.565
+    },
+    {
+      "name": "bug_mesh",
+      "material": "15D No-See-Um Nylon Monofilament Mesh",
+      "area_m2": 14.02,
+      "pack_factor_L_per_m2": 0.095,
+      "packed_vol_L": 1.332
+    },
+    {
+      "name": "thermal_liner",
+      "material": "15D Breathable Ripstop w/ Low-E Reflective Dot Matrix (ε=0.15)",
+      "area_m2": 21.69,
+      "pack_factor_L_per_m2": 0.12,
+      "packed_vol_L": 2.603
+    },
+    {
+      "name": "ykk5_zippers_webbing_hardware",
+      "packed_vol_L": 1.4
+    },
+    {
+      "name": "cnc_apex_hub_and_base_socket",
+      "packed_vol_L": 0.461
+    },
+    {
+      "name": "48x_bayonet_helical_flight_discs",
+      "packed_vol_L": 0.502
+    },
+    {
+      "name": "2x_R5.2_insulated_air_mats",
+      "packed_vol_L": 3.6
+    }
+  ],
+  "nesting_clearances_mm": {
+    "mast_lower_ID_to_middle_OD": 2.0,
+    "mast_middle_ID_to_upper_OD": 2.4,
+    "mast_upper_ID_to_spreader_OD": 14.6,
+    "strut_lower_ID_to_upper_OD": 1.6,
+    "strut_upper_ID_to_Ystake_OD": 6.0,
+    "strut_upper_ID_to_Vstake_OD": 4.0,
+    "mast_lower3_ID_to_minipump_OD": 4.0
+  },
+  "all_pass": true
+}

@@ -1,0 +1,67 @@
+{
+  "simulation": "SIM-5: Geotechnical Double-Helical Screw Anchor Pull-Out (Mitsch-Clemence / Meyerhof-Adams)",
+  "anchor_system": "24x 320mm 7075-T6 Shaft + PA66-GF30 Double-Helical (Dh=52mm) on Dual Concentric Rings (r=4.1m & r=3.3m)",
+  "fea_coupled_independent_anchor_loads_N": {
+    "steady_20ms": 356.6,
+    "gust_25ms": 530.3
+  },
+  "soil_profiles": {
+    "standard_lawn_loam": {
+      "label": "標準芝生・関東ローム土",
+      "single_helical_anchor_N": 1265.7,
+      "SF_at_20ms_steady": 3.55,
+      "SF_at_25ms_gust": 2.39
+    },
+    "dense_garden_clay": {
+      "label": "締固め宅地庭土（粘性土）",
+      "single_helical_anchor_N": 1701.2,
+      "SF_at_20ms_steady": 4.77,
+      "SF_at_25ms_gust": 3.21
+    },
+    "rain_saturated_wet_loam": {
+      "label": "豪雨後の湿潤軟質庭土（最悪条件）",
+      "single_helical_anchor_N": 717.7,
+      "SF_at_20ms_steady": 2.01,
+      "SF_at_25ms_gust": 1.35
+    },
+    "loose_sandy_garden": {
+      "label": "砂質庭土（※軟質砂地では2本タンデム補助推奨）",
+      "single_helical_anchor_N": 350.4,
+      "SF_at_20ms_steady": 0.98,
+      "SF_at_25ms_gust": 0.66
+    }
+  },
+  "checks": {
+    "standard_lawn_loam_anchor": {
+      "pass": true,
+      "anchor_capacity_N": 1265.7,
+      "peak_load_20ms_N": 356.6,
+      "peak_load_25ms_N": 530.3,
+      "SF_20ms": 3.55,
+      "SF_25ms": 2.39,
+      "limits_SF": {
+        "20ms": 2.5,
+        "25ms": 1.8
+      }
+    },
+    "rain_saturated_worst_case_anchor": {
+      "pass": true,
+      "anchor_capacity_N": 717.7,
+      "SF_20ms": 2.01,
+      "SF_25ms": 1.35,
+      "limits_SF": {
+        "20ms": 1.8,
+        "25ms": 1.3
+      }
+    },
+    "anchor_7075_and_pa66gf30_strength": {
+      "pass": true,
+      "shaft_combined_stress_MPa": 41.7,
+      "shaft_SF": 12.05,
+      "flight_PA66GF30_stress_MPa": 3.2,
+      "flight_SF": 55.73,
+      "limit_min_SF": 2.5
+    }
+  },
+  "all_pass": true
+}

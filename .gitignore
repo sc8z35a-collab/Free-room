@@ -1,0 +1,8 @@
+# Heavy transient solver scratch meshes/workdirs (reproducible via python3 simulations/run_all_simulations.py)
+simulations/results/openfoam_windtunnel/
+simulations/results/calculix_fea/
+simulations/__pycache__/
+__pycache__/
+*.pyc
+.DS_Store
+node_modules/

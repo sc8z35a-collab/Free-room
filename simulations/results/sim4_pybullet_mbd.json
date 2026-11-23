@@ -1,0 +1,48 @@
+{
+  "simulation": "SIM-4: PyBullet 3D Rigid-Body & Articulated Multibody Dynamics",
+  "engine": "PyBullet (Bullet Physics 3D, dt=1/240s, g=9.81 m/s^2)",
+  "mass_breakdown_kg": {
+    "case_shell": 1.62,
+    "mast_nested_bundle": 1.44,
+    "struts_and_anchor_shafts": 3.48,
+    "aux_hardware_trays": 0.51,
+    "fabrics_envelope": 4.83,
+    "apex_hub_and_flights": 0.66,
+    "insulated_air_mats": 0.96
+  },
+  "checks": {
+    "low_center_of_gravity": {
+      "pass": true,
+      "com_height_mm": 224.29,
+      "com_lateral_offset_mm": -9.57,
+      "com_longitudinal_offset_mm": 4.66,
+      "mid_height_mm": 240.0,
+      "total_packed_mass_kg": 13.5
+    },
+    "upright_tilt_stability_pybullet": {
+      "pass": true,
+      "max_stable_tilt_plusZ_deg": 21.0,
+      "max_stable_tilt_minusZ_deg": 17.0,
+      "min_tilt_deg": 17.0,
+      "analytic_cross_check_deg": 17.43,
+      "limit_min_deg": 15.0
+    },
+    "clamshell_180_deployment_pybullet": {
+      "pass": true,
+      "unfolded_residual_angle_deg": 0.0,
+      "deployed_base_dims_mm": [
+        520.0,
+        960.0,
+        80.0
+      ],
+      "limit_max_deg": 0.5
+    },
+    "eccentric_85kg_platform_stability": {
+      "pass": true,
+      "base_tilt_under_85kg_deg": 0.0,
+      "hinge_deflection_deg": 0.0,
+      "limit_max_deg": 1.0
+    }
+  },
+  "all_pass": true
+}

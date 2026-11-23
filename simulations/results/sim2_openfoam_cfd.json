@@ -1,0 +1,96 @@
+{
+  "simulation": "SIM-2: OpenFOAM 3D Turbulent Wind Tunnel CFD (k-omega SST RANS)",
+  "solver": "OpenFOAM simpleFoam + snappyHexMesh (40k+ 3D cells, full patch integration)",
+  "wind_speeds_ms": {
+    "steady": 20.0,
+    "gust": 25.0
+  },
+  "force_coeffs": {
+    "time_iter": 220,
+    "Cd": 0.3632,
+    "Cl_roof_plan": 0.6717,
+    "Cm": 0.0787
+  },
+  "forces_20ms": {
+    "Fx_drag_N": 1000.94,
+    "Fy_side_N": -0.31,
+    "Fz_lift_N": 3085.7,
+    "Mx_Nm": -0.23,
+    "My_overturn_Nm": 1085.26,
+    "Mz_Nm": 0.02
+  },
+  "forces_25ms_gust": {
+    "Fx_drag_N": 1563.97,
+    "Fy_side_N": -0.48,
+    "Fz_lift_N": 4821.4,
+    "Mx_Nm": -0.36,
+    "My_overturn_Nm": 1695.72,
+    "Mz_Nm": 0.04
+  },
+  "surface_Cp_probes": {
+    "wall_Cp_12": [
+      -0.2614,
+      -0.2581,
+      -0.2471,
+      -0.5236,
+      -0.6005,
+      0.4092,
+      0.8703,
+      0.4091,
+      -0.6006,
+      -0.5238,
+      -0.2472,
+      -0.258
+    ],
+    "roof_Cp_12": [
+      -0.3771,
+      -0.5108,
+      -0.7667,
+      -0.9232,
+      -0.8752,
+      -0.5475,
+      -0.3761,
+      -0.5476,
+      -0.8757,
+      -0.9235,
+      -0.7669,
+      -0.5109
+    ],
+    "apex_Cp": -1.5716
+  },
+  "checks": {
+    "openfoam_mesh_quality": {
+      "pass": true,
+      "mesh_ok": true,
+      "mesh_cells_3d": 40224,
+      "pavilion_surface_faces": 1368,
+      "integrated_area_m2": 45.75,
+      "blockage_ratio_pct": 3.91
+    },
+    "rans_solver_convergence": {
+      "pass": true,
+      "iterations": 220,
+      "final_Ux_residual": 0.000241,
+      "final_p_residual": 0.000223,
+      "lateral_symmetry_err_pct": 0.031,
+      "turbulence_model": "k-omega SST (RANS)",
+      "reynolds_number": 6666667.0
+    },
+    "aerodynamic_drag_efficiency": {
+      "pass": true,
+      "Cd_measured": 0.3632,
+      "limit_max_Cd": 0.7,
+      "drag_20ms_N": 1000.9,
+      "drag_25ms_gust_N": 1564.0,
+      "reduction_vs_rectangular_pct": 73.1
+    },
+    "aerodynamic_roof_uplift_bounded": {
+      "pass": true,
+      "Cl_roof_plan_measured": 0.6717,
+      "limit_max_Cl_roof": 0.8,
+      "uplift_20ms_N": 3085.7,
+      "uplift_25ms_gust_N": 4821.4
+    }
+  },
+  "all_pass": true
+}
