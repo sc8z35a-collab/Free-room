@@ -1,0 +1,72 @@
+{
+  "simulation": "V2-SIM-7: 72-Hour Coupled Transient Diurnal Hygrothermal & CO2 ODE (SciPy RK45)",
+  "passed": true,
+  "checks": {
+    "summer_38C_passive_temp_rise_under_4_5C": true,
+    "summer_CO2_under_900ppm": true,
+    "winter_minus5C_CO2_under_1000ppm": true,
+    "typhoon_100pctRH_CO2_under_900ppm": true,
+    "zero_interior_condensation_drip_all_3_scenarios": true,
+    "passive_alu_foil_mat_reduces_ground_loss_ge_70pct": true
+  },
+  "summer_72h": {
+    "scenario": "Summer 38°C Heatwave (1000 W/m2 Solar, 75% RH, Passive Only)",
+    "duration_h": 72.0,
+    "outdoor_T_range_C": [
+      26.0,
+      38.0
+    ],
+    "indoor_T_range_C": [
+      26.42,
+      41.11
+    ],
+    "peak_T_rise_above_ambient_C": 4.24,
+    "max_CO2_ppm": 587.4,
+    "mean_CO2_ppm": 567.0,
+    "mean_ventilation_ACH": 31.31,
+    "outer_wall_condensate_drained_g_72h": 0.0,
+    "interior_drip_onto_living_floor_g": 0.0
+  },
+  "winter_72h": {
+    "scenario": "Winter -5°C Freeze (80% RH, 2 Sleeping Adults, Passive Foil Mats)",
+    "duration_h": 72.0,
+    "outdoor_T_range_C": [
+      -5.0,
+      3.0
+    ],
+    "indoor_T_range_C": [
+      -3.43,
+      5.72
+    ],
+    "peak_T_rise_above_ambient_C": 3.36,
+    "max_CO2_ppm": 914.3,
+    "mean_CO2_ppm": 817.7,
+    "mean_ventilation_ACH": 11.42,
+    "outer_wall_condensate_drained_g_72h": 1606.4,
+    "interior_drip_onto_living_floor_g": 0.0
+  },
+  "typhoon_72h": {
+    "scenario": "Typhoon 72h Rain (24°C, 100% RH, 150mm/h, 2 Adults, Baffled Vents)",
+    "duration_h": 72.0,
+    "outdoor_T_range_C": [
+      22.5,
+      25.5
+    ],
+    "indoor_T_range_C": [
+      23.15,
+      26.04
+    ],
+    "peak_T_rise_above_ambient_C": 1.06,
+    "max_CO2_ppm": 513.8,
+    "mean_CO2_ppm": 513.5,
+    "mean_ventilation_ACH": 47.47,
+    "outer_wall_condensate_drained_g_72h": 1180.4,
+    "interior_drip_onto_living_floor_g": 0.0
+  },
+  "passive_floor_mat": {
+    "effective_R_SI_m2K_W": 0.468,
+    "ir_reflectivity_pct": 95.0,
+    "ground_heat_loss_reduction_pct": 77.0,
+    "electric_power_W": 0.0
+  }
+}

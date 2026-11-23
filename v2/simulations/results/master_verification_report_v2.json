@@ -1,0 +1,66 @@
+{
+  "project": "FREE-ROOM V2 AERO-PRISM P300",
+  "timestamp_utc": "2026-11-23T03:26:36.527465+00:00",
+  "all_passed": true,
+  "total_simulations": 9,
+  "simulations_passed": 9,
+  "total_checks": 61,
+  "passed_checks": 61,
+  "pass_rate_pct": 100.0,
+  "summary_table": [
+    {
+      "simulation": "V2-SIM-1: 3D Solid Geometry, Zero-Case Soft-Roll Packing & 2D Cutting (Trimesh)",
+      "passed": true,
+      "checks_passed": 7,
+      "checks_total": 7
+    },
+    {
+      "simulation": "V2-SIM-2: Multi-Azimuth (0°/45°/90°) 3D Turbulent CFD (OpenFOAM k-omega SST)",
+      "passed": true,
+      "checks_passed": 6,
+      "checks_total": 6
+    },
+    {
+      "simulation": "V2-SIM-3: Ultra-Strict 3-Mast Tension-Only NLGEOM FEA, Buckling & Modal (CalculiX 2.21 ccx)",
+      "passed": true,
+      "checks_passed": 9,
+      "checks_total": 9
+    },
+    {
+      "simulation": "V2-SIM-4: 3D Rigid-Body Multibody Dynamics (PyBullet Engine)",
+      "passed": true,
+      "checks_passed": 6,
+      "checks_total": 6
+    },
+    {
+      "simulation": "V2-SIM-5: Hybrid Earth-Fluke Deadman Geotechnical Pullout (4 Soils + ±15° Error)",
+      "passed": true,
+      "checks_passed": 6,
+      "checks_total": 6
+    },
+    {
+      "simulation": "V2-SIM-6: 7-Layer 100% Rain Non-Ingress Guarantee (50k Lagrangian Droplets + 150mm/h + 200mm Flood)",
+      "passed": true,
+      "checks_passed": 7,
+      "checks_total": 7
+    },
+    {
+      "simulation": "V2-SIM-7: 72-Hour Coupled Transient Diurnal Hygrothermal & CO2 ODE (SciPy RK45)",
+      "passed": true,
+      "checks_passed": 6,
+      "checks_total": 6
+    },
+    {
+      "simulation": "V2-SIM-8: 50,000-Trial Stochastic Monte Carlo Reliability & Sobol Sensitivity",
+      "passed": true,
+      "checks_passed": 6,
+      "checks_total": 6
+    },
+    {
+      "simulation": "V2-SIM-9: Zero-Cheating Budget (<=¥6,000), Constraint & DFM Audit",
+      "passed": true,
+      "checks_passed": 8,
+      "checks_total": 8
+    }
+  ]
+}
