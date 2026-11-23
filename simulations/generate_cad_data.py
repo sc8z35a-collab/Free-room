@@ -162,11 +162,12 @@ def main():
                     ["市販流通規格率", f"100% ({s8['checks']['all_parts_off_the_shelf_buildable']['bom_line_items']}品目全市販入手可)"],
                     ["総質量 (+3%公差)", f"{nom_mass:.2f} kg (最悪 {max_mass:.2f} kg ≤ 14.0 kg)"],
                     ["1人設営時間", f"{setup_min:.1f} 分 (工具・電源不要)"],
-                    ["概算材料費 (DIY)", f"約 ¥{cost_jpy:,} (約 ${s8['checks']['all_parts_off_the_shelf_buildable']['estimated_diy_material_cost_usd']:,})"],
+                    ["精密製作総予算 (送料・税込)", f"¥{cost_jpy:,} (本体 ¥{s8['checks']['all_parts_off_the_shelf_buildable']['parts_only_cost_jpy']:,})"],
                 ],
             },
         ],
         "bom": s8["bom"],
+        "budget_scenarios": s8.get("budget_scenarios", []),
         "setup_steps": s8["setup_steps"],
         "setup_total_min": setup_min,
         "physics_fields": {
@@ -220,14 +221,25 @@ def main():
 
     md_lines += [
         "",
-        "## 4. 現実製造可能 BOM（部品表・すべて実在の市販規格）",
+        "## 4. 現実製造可能 BOM（2026年11月実売相場・歩留まり/送料/関税/消費税10%込）",
         "",
-        "| ID | 部品名 | 市販規格・入手先仕様 | 数量 | 質量 (kg) | 概算材料費 (円) |",
+        "| ID | 部品名 | 市販規格・入手先仕様 | 数量 | 質量 (kg) | 精密予算 (円) |",
         "|---|---|---|---|---|---|",
     ]
     for b in s8["bom"]:
         md_lines.append(f"| {b['id']} | {b['part']} | {b['spec']} | {b['qty']} | {b['mass_kg']:.2f} | ¥{b['cost_jpy']:,} |")
-    md_lines.append(f"| **合計** | **全装備内蔵（52×16×48cm完結）** | **公差+3%込 {max_mass:.2f} kg** | — | **{nom_mass:.2f}** | **¥{cost_jpy:,}** |")
+    md_lines.append(f"| **合計** | **1点完璧DIY 総支払額（送料・関税・税込）** | **公差+3%込 {max_mass:.2f} kg** | — | **{nom_mass:.2f}** | **¥{cost_jpy:,}** |")
+
+    if s8.get("budget_scenarios"):
+        md_lines += [
+            "",
+            "### 製作方式別の精密総予算比較（1 USD = 160 円基準）",
+            "",
+            "| 製作プラン | 部品・加工費 | 送料・関税・税 | 外注縫製/組立 | **総予算** | 備考 |",
+            "|---|---:|---:|---:|---:|---|",
+        ]
+        for sc in s8["budget_scenarios"]:
+            md_lines.append(f"| {sc['plan']} | ¥{sc['parts_jpy']:,} | ¥{sc['shipping_tax_jpy']:,} | ¥{sc['labor_jpy']:,} | **¥{sc['total_jpy']:,}** | {sc['note']} |")
 
     md_lines += [
         "",
