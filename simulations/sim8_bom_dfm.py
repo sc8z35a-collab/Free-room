@@ -62,34 +62,44 @@ def run_simulation():
     # Clamshell case: two 520x480x1.5mm 3K CFRP ribbed face sheets (0.99 kg) + 7075 edge channels + divider + hinges/latches
     m_case = 1.62
 
+    # Exact Nov 2026 live-researched 1-off build prices (FX 1 USD = 160 JPY, incl. cutting waste, spares, CNC/MJF, adhesives, shipping & 10% tax)
     bom = [
-        {"id": "BOM-01", "part": "クラムシェル構造外殻ケース (520×160×480mm, 1.5mm 3K CFRPリブ補強 + 7075-T6枠 + 180°ヒンジ)",
-         "spec": "市販1.5mm 3Kカーボン板 + A7075押出チャンネル + EPDMパッキン", "qty": 1, "mass_kg": round(m_case, 2), "cost_jpy": 32000, "off_the_shelf": True},
-        {"id": "BOM-02", "part": "中央3段同心ネストCFRPマスト (展開2.90m / 収納46cm×3外管)",
-         "spec": "市販ロールラップUD+3Kカーボン管 OD44/38/32mm + A7075継手", "qty": 7, "mass_kg": round(m_mast_tot, 2), "cost_jpy": 28000, "off_the_shelf": True},
+        {"id": "BOM-01", "part": "クラムシェル構造外殻ケース (520×160×480mm, 1.5mm 3K CFRPリブ補強 + アルミ枠 + 180°ヒンジ + 構造用接着剤)",
+         "spec": "3Kカーボン板1.5mm(500×600mm×2)+仕切板+リブ+A6063枠5本+A7075角8個+SUS丁番/ラッチ+3M DP460", "qty": 1, "mass_kg": round(m_case, 2), "cost_jpy": 50500, "off_the_shelf": True},
+        {"id": "BOM-02", "part": "中央3段同心ネストCFRPマスト (展開2.90m / 定尺1000mm×4本＋旋盤A7075段付き継手×6)",
+         "spec": "3Kロールラップ管 OD44×2本・OD38×1本・OD32×1本(予備節込) + JLCCNC A7075継手", "qty": 7, "mass_kg": round(m_mast_tot, 2), "cost_jpy": 41280, "off_the_shelf": True},
         {"id": "BOM-03", "part": "中段4方向スプレッダー＆ダイヤモンドシュラウド機構",
-         "spec": "OD14/ID11mm CFRP管 ×4 + CNC A7075カラー + 2mmダイニーマ×8", "qty": 1, "mass_kg": round(m_spreader, 2), "cost_jpy": 7500, "off_the_shelf": True},
-        {"id": "BOM-04", "part": "外周2段同心ネストCFRP支柱 ×12本 (展開1.60m / 収納44cm×24外管)",
-         "spec": "市販UD+3Kカーボン管 OD24/ID21.6 & OD20/ID18.0mm + ショックコード", "qty": 12, "mass_kg": round(m_struts_tot, 2), "cost_jpy": 40000, "off_the_shelf": True},
-        {"id": "BOM-05", "part": "CNC A7075-T6 頂点テンションハブ・台座ソケット・手回しTバー",
-         "spec": "A7075-T6 切削品（外注CNC 1個から製作可能）", "qty": 1, "mass_kg": round(m_hubs, 2), "cost_jpy": 16000, "off_the_shelf": True},
-        {"id": "BOM-06", "part": "一体型防水ルーフ＆垂直側壁 (20D Silpoly 耐水圧3000mm)",
-         "spec": "市販1.1oz 20D Ripstop Silpoly (Sil/PU 3000mm) 約54 m²", "qty": 1, "mass_kg": round(m_roof + m_wall, 2), "cost_jpy": 38000, "off_the_shelf": True},
-        {"id": "BOM-07", "part": "防水バスタブフロア (30D 高強度ナイロン6.6 耐水圧5000mm, 立ち上がり16cm)",
-         "spec": "市販30D Ripstop Nylon 6.6 TPU/PU5000mm 約21.3 m²", "qty": 1, "mass_kg": round(m_floor, 2), "cost_jpy": 21000, "off_the_shelf": True},
-        {"id": "BOM-08", "part": "全周防虫メッシュ＆着脱式Low-Eアルミ蒸着結露防止インナーライナー",
-         "spec": "15D No-See-Umメッシュ + 15D通気Low-E(ε=0.15)ライナー + YKK #5 AquaGuard", "qty": 1, "mass_kg": round(m_mesh + m_liner + m_zips, 2), "cost_jpy": 24000, "off_the_shelf": True},
-        {"id": "BOM-09", "part": "反射ダイニーマ(SK78) 2.0mm デュアルリング＆45°ガイライン一式 (破断200kgf)",
-         "spec": "市販2.0mm Dyneema SK78ロープ 約130m + アルミ自在金具(Line-Lok)", "qty": 1, "mass_kg": round(m_cables, 2), "cost_jpy": 12000, "off_the_shelf": True},
-        {"id": "BOM-10", "part": "2重同心アンカー用 320mmダブルヘリカル・スクリュー×24本 + 110mmチタン床ピン×12本",
-         "spec": "A7075-T6中空軸(OD12mm×320mm,支柱内ネスト) + 着脱PA66-GF30羽根(Ø52mm×48枚)", "qty": 36, "mass_kg": round(m_stakes, 2), "cost_jpy": 22000, "off_the_shelf": True},
-        {"id": "BOM-11", "part": "内蔵R=5.2 高断熱エアマット ×2枚 + USB-Cマイクロ電動ポンプ",
-         "spec": "Therm-a-Rest NeoAir XLite/XTherm同等R5.2マット(195×65×7.5cm) ×2", "qty": 2, "mass_kg": round(m_mats, 2), "cost_jpy": 36000, "off_the_shelf": True},
+         "spec": "OD14/ID11mm CFRP管(1000mm×2本) + CNC A7075 4方向カラー + ピン類", "qty": 1, "mass_kg": round(m_spreader, 2), "cost_jpy": 8320, "off_the_shelf": True},
+        {"id": "BOM-04", "part": "外周2段同心ネストCFRP支柱 ×12本 (定尺1000mm×26本＋継手管4本＋異径カラー/ショックコード)",
+         "spec": "OD24×13本・OD20×13本(各予備1本込) + OD18継手管4本 + 異径カラー12個 + 3mmコード25m", "qty": 12, "mass_kg": round(m_struts_tot, 2), "cost_jpy": 79440, "off_the_shelf": True},
+        {"id": "BOM-05", "part": "CNC A7075-T6 頂点12方向テンションハブ・中央台座ソケット・手回しTバー",
+         "spec": "JLCCNC A7075-T6 1点切削＋硬質アルマイト (Ø124ハブ+Ø96台座+Tバー)", "qty": 1, "mass_kg": round(m_hubs, 2), "cost_jpy": 20000, "off_the_shelf": True},
+        {"id": "BOM-06", "part": "一体型防水ルーフ＆垂直側壁 (20D Silpoly PU4000 22yd + 標準Silpoly 20yd, 零ロス裁断)",
+         "spec": "Ripstop by the Roll 20D Silpoly (PU4000 $13.75/yd×22 + 標準$10.50/yd×20, 裁断ロス込)", "qty": 1, "mass_kg": round(m_roof + m_wall, 2), "cost_jpy": 82000, "off_the_shelf": True},
+        {"id": "BOM-07", "part": "防水バスタブフロア (40D HyperD PU4000 / 30D PU5000 22yd, 4枚接ぎ立ち上がり16cm)",
+         "spec": "RBTR/Extremtextil 高耐水床生地 幅147cm×22yd (裁断ロス・隅補強込)", "qty": 1, "mass_kg": round(m_floor, 2), "cost_jpy": 40480, "off_the_shelf": True},
+        {"id": "BOM-08", "part": "防虫メッシュ(14yd)＋Low-E通気ライナー(19yd)＋YKK #5 AquaGuard(14m)＋糸/止水剤/補強布",
+         "spec": "0.67oz No-See-Um + 15D Low-E(ε=0.15) + YKK止水14m/スライダー16個 + Seam Grip×4/テープ40m", "qty": 1, "mass_kg": round(m_mesh + m_liner + m_zips, 2), "cost_jpy": 71440, "off_the_shelf": True},
+        {"id": "BOM-09", "part": "反射ダイニーマ(SK78) 2.0mm デュアルリング＆45°ガイライン一式 (150m＋自在40個＋カラビナ24個)",
+         "spec": "2.0mm Dyneema SK78(破断200kgf) 150m + アルミLine-Lok×40 + 軽量ワイヤーゲート×24", "qty": 1, "mass_kg": round(m_cables, 2), "cost_jpy": 20600, "off_the_shelf": True},
+        {"id": "BOM-10", "part": "2重同心アンカー用 320mmダブルヘリカル×24本(A7075軸旋盤+MJF羽根52枚) + 110mmチタン床ピン14本",
+         "spec": "A7075-T6 OD12mm軸×24旋盤加工 + JLC3DP PA12-GF羽根×52枚(予備4込) + チタンピン14本", "qty": 36, "mass_kg": round(m_stakes, 2), "cost_jpy": 47064, "off_the_shelf": True},
+        {"id": "BOM-11", "part": "内蔵R≥5.2 高断熱エアマット ×2枚 + USB-Cマイクロ電動ポンプ (標準コスパ構成)",
+         "spec": "Naturehike R5.8軽量エアマット(¥15,990×2) + FLEXTAIL TINY PUMP 2X(¥3,140)", "qty": 2, "mass_kg": round(m_mats, 2), "cost_jpy": 35120, "off_the_shelf": True},
+        {"id": "BOM-12", "part": "国際宅配送料(米・中)・国内送料・個人輸入関税＆輸入消費税(10%)",
+         "spec": "RBTR米国DHL(¥10,400)+中国CFRP/CNC/MJF 3口(¥18,400)+関税/消費税(¥29,500)+国内送料(¥3,500)", "qty": 1, "mass_kg": 0.00, "cost_jpy": 61800, "off_the_shelf": True},
     ]
 
     nom_mass = sum(x["mass_kg"] for x in bom)
     worst_mass = nom_mass * 1.03  # +3% real fabrication tolerance
+    parts_cost_jpy = sum(x["cost_jpy"] for x in bom if x["id"] != "BOM-12")
     total_cost_jpy = sum(x["cost_jpy"] for x in bom)
+
+    budget_scenarios = [
+        {"plan": "① 標準・完璧DIY（自作縫製・切断／CNC・3Dプリント外注）", "parts_jpy": parts_cost_jpy, "shipping_tax_jpy": 61800, "labor_jpy": 0, "total_jpy": total_cost_jpy, "note": "予備費5%込 約58.6万円"},
+        {"plan": "② 最高級ブランドDIY（XTherm NXT×2 + MTN Silnylon 6.6 + 全量PU4000）", "parts_jpy": 589513, "shipping_tax_jpy": 68300, "labor_jpy": 0, "total_jpy": 657813, "note": "最上級UL仕様 約66万円"},
+        {"plan": "③ 国内プロ工房フル外注（①資材＋国内テント縫製・外殻組立ワンオフ委託）", "parts_jpy": parts_cost_jpy, "shipping_tax_jpy": 61800, "labor_jpy": 400000, "total_jpy": total_cost_jpy + 400000, "note": "工賃目安 ¥34〜46万円（計約90〜102万円）"},
+    ]
 
     # Solo (1-person) setup ergonomics & step-by-step time budget (seconds)
     setup_steps = [
@@ -108,8 +118,9 @@ def run_simulation():
         "all_parts_off_the_shelf_buildable": {
             "pass": all(x["off_the_shelf"] for x in bom),
             "bom_line_items": len(bom),
+            "parts_only_cost_jpy": parts_cost_jpy,
             "estimated_diy_material_cost_jpy": total_cost_jpy,
-            "estimated_diy_material_cost_usd": round(total_cost_jpy / 150.0),
+            "estimated_diy_material_cost_usd": round(total_cost_jpy / 160.0),
         },
         "single_person_portable_mass": {
             "pass": worst_mass <= 14.0,
@@ -130,6 +141,7 @@ def run_simulation():
     results = {
         "simulation": "SIM-8: Real-World Manufacturability (DFM/DFA), Commercial BOM & Solo Ergonomics",
         "bom": bom,
+        "budget_scenarios": budget_scenarios,
         "setup_steps": setup_steps,
         "checks": checks,
         "all_pass": all(c["pass"] for c in checks.values()),

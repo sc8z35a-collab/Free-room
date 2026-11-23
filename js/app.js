@@ -385,17 +385,30 @@ function renderInfoSheet() {
     </div>
   `;
 
-  // TAB 4: Commercial BOM & Solo Setup Steps
+  // TAB 4: Commercial BOM, Exact Budget & Solo Setup Steps
+  const totalCost = s.bom.reduce((acc, b) => acc + b.cost_jpy, 0);
+  const totalMass = s.bom.reduce((acc, b) => acc + b.mass_kg, 0);
   document.getElementById('tab-bom').innerHTML = `
     <div class="doc-section">
-      <h2>現実製造可能 BOM（すべて実在の市販流通規格）</h2>
+      <h2>現実製造可能 BOM（2026年実売相場・歩留まり/送料/税込）</h2>
       <table class="spec-table">
-        <thead><tr><th>部品・市販規格</th><th>質量</th><th>概算費</th></tr></thead>
+        <thead><tr><th>部品・市販規格</th><th>質量</th><th>精密予算</th></tr></thead>
         <tbody>
           ${s.bom.map((b) => `<tr><td><strong>${b.part}</strong><br><span style="color:#666;font-size:11px">${b.spec}</span></td><td>${b.mass_kg.toFixed(2)} kg</td><td>¥${b.cost_jpy.toLocaleString()}</td></tr>`).join('')}
+          <tr style="background:#fafafa"><td><strong>合計（標準・完璧DIY 総支払額）</strong></td><td><strong>${totalMass.toFixed(2)} kg</strong></td><td><strong>¥${totalCost.toLocaleString()}</strong></td></tr>
         </tbody>
       </table>
     </div>
+    ${s.budget_scenarios?.length ? `
+    <div class="doc-section">
+      <h2>製作プラン別 総予算比較（1 USD = 160 円基準）</h2>
+      <table class="spec-table">
+        <thead><tr><th>製作方式</th><th>総予算</th></tr></thead>
+        <tbody>
+          ${s.budget_scenarios.map((sc) => `<tr><td><strong>${sc.plan}</strong><br><span style="color:#666;font-size:11px">${sc.note}</span></td><td><strong>¥${sc.total_jpy.toLocaleString()}</strong></td></tr>`).join('')}
+        </tbody>
+      </table>
+    </div>` : ''}
     <div class="doc-section">
       <h2>1人設営手順（工具・電源不要／約 ${s.setup_total_min} 分）</h2>
       <ol>
